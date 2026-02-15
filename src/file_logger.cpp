@@ -2,17 +2,24 @@
 #include <fstream>
 #include <iostream>
 
-// Implement this:
+// her åbner vi files i konstruktoren
 FileLogger::FileLogger(std::string filename)
 {
+    logfile.open(filename);
 }
 
-// Implement this:
+// her skriver beskeden til filen efterfulgt af en ny linje
 void FileLogger::log(std::string msg)
 {
+    if (logfile.is_open()) {
+        logfile << msg << std::endl;
+    }
 }
 
-// Implement this:
+// her lukker vi filen i destruktoren
 FileLogger::~FileLogger()
 {
+    if (logfile.is_open()) {
+        logfile.close();
+    }
 }
